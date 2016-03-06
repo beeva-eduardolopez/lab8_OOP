@@ -1,5 +1,4 @@
-// var dices = document.getElementsByClassName('dice');
-var dices = document.getElementsByClassName('test');
+var dices = document.getElementsByClassName('dice');
 
 var face0 = new Image();
 face0.src = "dice1.png";
@@ -32,7 +31,7 @@ function rollDice() {
 function createDice() {
     var id = dices.length;
     // var html = '<div class="dice" id="' + id + '"> <img src="dice1.png" name="mydice'+ id + '"> </div>';
-    var html = '<div class="test" id="' + id + '"> <img src="dice1.png" name="mydice'+ id + '"> </div>';
+    var html = '<div class="dice" id="' + id + '"> <img src="dice1.png" name="mydice'+ id + '"> </div>';
     var diceOOP = new Dice(html);
     document.getElementById("dices-container").innerHTML += diceOOP.value;
    
