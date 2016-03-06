@@ -1,18 +1,18 @@
 // var dices = document.getElementsByClassName('dice');
 var dices = document.getElementsByClassName('test');
 
-var face0 = new Image()
-face0.src = "dice1.png"
-var face1 = new Image()
-face1.src = "dice2.png"
-var face2 = new Image()
-face2.src = "dice3.png"
-var face3 = new Image()
-face3.src = "dice4.png"
-var face4 = new Image()
-face4.src = "dice5.png"
-var face5 = new Image()
-face5.src = "dice6.png"
+var face0 = new Image();
+face0.src = "dice1.png";
+var face1 = new Image();
+face1.src = "dice2.png";
+var face2 = new Image();
+face2.src = "dice3.png";
+var face3 = new Image();
+face3.src = "dice4.png";
+var face4 = new Image();
+face4.src = "dice5.png";
+var face5 = new Image();
+face5.src = "dice6.png";
 
 var Dice = function (value) {
     this.value = value;
