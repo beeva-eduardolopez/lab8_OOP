@@ -39,15 +39,10 @@ var Dice = function () {
         this.div.className = 'dice';
         var id = dice.length;
         this.div.id = id;
-        // var img = document.createElement('img');
-        // img.scr = 'dice1.png'; 
-        // img.name = 'mydie'+id;
-        // this.div.innerHTML='<img src="dice1.png" name="mydice'+ id + '">'
-        // this.div.appendChild(img);
         this.roll();
-        this.div.ondblclick = function deleteDice() {
-            document.getElementById(this.div.id).remove();
-        }
+        // this.div.ondblclick = function deleteDice() {
+        //     document.getElementById(this.div.id).remove();
+        // }
         document.getElementById('dices-container').appendChild(this.div);
     }
     this.roll = function () {
@@ -61,7 +56,6 @@ var Dice = function () {
             this.remove();
         }
     }
-
 };
 
 function createDice() {
