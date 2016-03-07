@@ -1,4 +1,4 @@
-var dices = document.getElementsByClassName('dice');
+// var dices = document.getElementsByClassName('dice');
 
 var face0 = new Image();
 face0.src = "dice1.png";
@@ -13,33 +13,78 @@ face4.src = "dice5.png";
 var face5 = new Image();
 face5.src = "dice6.png";
 
-var Dice = function (value) {
-    this.value = value;
+// var Dice = function (value) {
+//     this.value = value;
+// };
+
+// function rollDice() {
+//     for (var index = 0; index < dices.length; index++) {
+//         var value = Math.floor(Math.random() * 5) + 1;
+//         document.images["mydice" + index].src = eval("face" + value + ".src");
+//     }
+// }
+// function createDice() {
+//     var id = dices.length;
+//     var html = '<div class="dice" id="' + id + '"> <img src="dice1.png" name="mydice'+ id + '"> </div>';
+//     var diceOOP = new Dice(html);
+//     document.getElementById("dices-container").innerHTML += diceOOP.value;
+// }
+var dice = [];
+
+var Dice = function () {
+    this.value = null;
+    this.div = null;
+    this.insert = function () {
+        this.div = document.createElement('div');
+        this.div.className = 'dice';
+        var id = dice.length;
+        this.div.id = id;
+        // var img = document.createElement('img');
+        // img.scr = 'dice1.png'; 
+        // img.name = 'mydie'+id;
+        // this.div.innerHTML='<img src="dice1.png" name="mydice'+ id + '">'
+        // this.div.appendChild(img);
+        this.roll();
+        this.div.ondblclick = function deleteDice() {
+            document.getElementById(this.div.id).remove();
+        }
+        document.getElementById('dices-container').appendChild(this.div);
+    }
+    this.roll = function () {
+        var num = Math.floor(Math.random() * 5) + 1;
+        this.value = num;
+        this.div.innerHTML = num;
+    }
+    this.remove = function () {
+        this.div.ondblclick = function deleteDice() {
+            dice.splice(this.id,1);
+            this.remove();
+        }
+    }
+
 };
+
+function createDice() {
+    var die = new Dice();
+    die.insert();
+    dice.push(die);
+    die.remove();
+}
 
 
 function rollDice() {
-
-
-    for (var index = 0; index < dices.length; index++) {
-        // var die = document.getElementById(index);
-        var value = Math.floor(Math.random() * 5) + 1;
-        document.images["mydice" + index].src = eval("face" + value + ".src");
-        // die.innerHTML = value;
+    for (var index = 0; index < dice.length; index++) {
+        var element = dice[index];
+        element.roll();
     }
 }
-function createDice() {
-    var id = dices.length;
-    // var html = '<div class="dice" id="' + id + '"> <img src="dice1.png" name="mydice'+ id + '"> </div>';
-    var html = '<div class="dice" id="' + id + '"> <img src="dice1.png" name="mydice'+ id + '"> </div>';
-    var diceOOP = new Dice(html);
-    document.getElementById("dices-container").innerHTML += diceOOP.value;
-   
-   
-    // var dice = document.createElement('div');
-    // dice.className = 'dice';
-    // dice.id = dices.length;
-    // dice.innerHTML = "<id='" + dice.id + ">0</p>";
-    // document.body.appendChild(dice);
 
+function sumDice() {
+    var sumValue = 0;
+    for (var index = 0; index < dice.length; index++) {
+        var element = dice[index];
+        var dieValue = element.value;
+        sumValue += dieValue;
+    }
+    alert('Sum of values of dice are: [' + sumValue + ']');
 }
