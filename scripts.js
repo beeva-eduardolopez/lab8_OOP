@@ -40,9 +40,6 @@ var Dice = function () {
         var id = dice.length;
         this.div.id = id;
         this.roll();
-        // this.div.ondblclick = function deleteDice() {
-        //     document.getElementById(this.div.id).remove();
-        // }
         document.getElementById('dices-container').appendChild(this.div);
     }
     this.roll = function () {
